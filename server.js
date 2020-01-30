@@ -61,6 +61,12 @@ app.get('/api/movies/:id', (req, res) => {
 	res.status(200).json(movie);
 });
 
+app.get('/api/movies/search/:title', (req,res) => {
+    const movie = movies.filter(movie => movie.title === req.params.title)[0];
+    res.status(200).json(movie)
+
+})
+
 app.post('/api/movies', (req, res) => {
 	if (req.body.id !== undefined) movies.push(req.body);
 	res.status(201).json(movies);

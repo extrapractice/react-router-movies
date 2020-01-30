@@ -1,12 +1,16 @@
 import React from 'react';
+import {NavLink} from 'react-router-dom'
 
 const SavedList = props => (
+    
   <div className="saved-list">
+  {console.log(props, 'props from savedList')}
     <h3>Saved Movies:</h3>
+    {console.log(props.list)}
     {props.list.map(movie => (
-      <span className="saved-movie">{movie.title}</span>
+      <button onClick={() => props.removeFromSavedList(movie)} key={movie.id} className="saved-movie">{movie.title}</button>
     ))}
-    <div className="home-button">Home</div>
+    <NavLink to="/"className="home-button">Home</NavLink>
   </div>
 );
 
